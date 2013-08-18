@@ -274,6 +274,15 @@ config	RK_DDR_500_VOLT
 	default "1100"
 
 config	RK_DDR_600
+	bool "600 MHz DDR (overclock!)"
+	default n
+
+config	RK_DDR_600_VOLT
+	depends on RK_DDR_600
+	int "600 MHz DDR voltage (mV)"
+	default "1100"
+
+config	RK_DDR_660
 	bool "660 MHz DDR (overclock!)"
 	default n
 
