@@ -46,6 +46,33 @@ config ACT8846_LDO6_18V
 	bool "Set ACT 8846 LDO6 to 1.8V"
 	default n
 
+
+config RFKILL_RK_POWERON_PIN3_PD1
+  bool "Use GPIO PIN3 PD1 for RFKILL RK poweron"
+  default n
+
+config RFKILL_RK_RESET_INVALID_GPIO
+  bool "Use INVALID_GPIO for RFKILL RK reset"
+  default n
+
+config RFKILL_RK_WAKE_PIN3_PC7
+  bool "Use GPIO PIN3 PC7 for RFKILL RK wake"
+  default n
+
+config RFKILL_RK_WAKE_HOST_PIN3_PC6
+  bool "Use GPIO PIN3 PC6 for RFKILL RK wake host"
+  default n
+
+
+config VSYNCFIX_SAM321
+  bool "Workaround for jerky video playback by returning -EFAULT in RK_FBIOSET_VSYNC_ENABLE - recommended (sam321)"
+  default n
+
+config VSYNCFIX_PHJA
+  bool "Workaround for jerky video playback by disabling the ktime_equal check in the vsync handler - not recommended (phjanderson)"
+  default n
+
+
 config RK_PWM_VOLT_MAX_1450
 	bool "Raise the PWM voltage limit up to 1.450V"
 	help
@@ -248,7 +275,7 @@ config	RK_DDR_300_VOLT
 
 config	RK_DDR_360
 	bool "360 MHz DDR"
-	default y
+	default n
 
 config	RK_DDR_360_VOLT
 	depends on RK_DDR_360
@@ -257,7 +284,7 @@ config	RK_DDR_360_VOLT
 
 config	RK_DDR_400
 	bool "400 MHz DDR"
-	default n
+	default y
 
 config	RK_DDR_400_VOLT
 	depends on RK_DDR_400
@@ -273,6 +300,15 @@ config	RK_DDR_500_VOLT
 	int "500 MHz DDR voltage (mV)"
 	default "1100"
 
+config	RK_DDR_536
+	bool "536 MHz DDR (overclock!)"
+	default n
+
+config	RK_DDR_536_VOLT
+	depends on RK_DDR_536
+	int "536 MHz DDR voltage (mV)"
+	default "1100"
+
 config	RK_DDR_600
 	bool "600 MHz DDR (overclock!)"
 	default n
@@ -282,13 +318,22 @@ config	RK_DDR_600_VOLT
 	int "600 MHz DDR voltage (mV)"
 	default "1100"
 
-config	RK_DDR_660
-	bool "660 MHz DDR (overclock!)"
+config	RK_DDR_640
+	bool "640 MHz DDR (overclock!)"
 	default n
 
-config	RK_DDR_660_VOLT
-	depends on RK_DDR_660
-	int "660 MHz DDR voltage (mV)"
+config	RK_DDR_640_VOLT
+	depends on RK_DDR_640
+	int "640 MHz DDR voltage (mV)"
+	default "1100"
+
+config	RK_DDR_672
+	bool "672 MHz DDR (overclock!)"
+	default n
+
+config	RK_DDR_672_VOLT
+	depends on RK_DDR_672
+	int "672 MHz DDR voltage (mV)"
 	default "1100"
 
 config	RK_DDR_700
