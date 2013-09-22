@@ -370,7 +370,7 @@ config	RK_DDR_800
 config	RK_DDR_800_VOLT
 	depends on RK_DDR_800
 	int "800 MHz DDR voltage (mV)"
-	default "1200"
+	default "1250"
 
 endmenu
 
