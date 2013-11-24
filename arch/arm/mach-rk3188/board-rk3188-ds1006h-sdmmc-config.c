@@ -67,13 +67,20 @@ int rk31sdk_get_sdmmc0_pin_io_voltage(void)
 * Well, you just own engineering module to set the value in the corresponding module branch.
 * Otherwise, you do not define this macro, eliminate it.
 *
-*/          
+*/      
+
 #if defined(CONFIG_RTL8192CU) || defined(CONFIG_RTL8188EU) 
     #define RK30SDK_WIFI_GPIO_POWER_N               GPIO3_A0            
     #define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_LOW//GPIO_HIGH        
     
 #elif defined(CONFIG_BCM4329) || defined(CONFIG_BCM4319) || defined(CONFIG_RK903) || defined(CONFIG_RK901) || defined(CONFIG_AP6330) || defined(CONFIG_AP6210)
-    #define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PD0                 
+		
+#if defined(CONFIG_RFKILL_RK_POWERON_PIN3_PB4) 
+	//#warning "[gin] for J22 #define RK30SDK_WIFI_GPIO_POWER_N RK30_PIN3_PB4"
+	#define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PB4
+#else	                 
+	#define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PD0
+#endif
     #define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH                   
 
     #define RK30SDK_WIFI_GPIO_RESET_N               RK30_PIN2_PA7
